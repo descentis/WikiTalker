@@ -69,7 +69,7 @@ def read_pickle(pickle_path):
 
 def read_valid_vocabulary(file_path):
     result = []
-    with open(file_path) as f:
+    with open(file_path,encoding="utf8") as f:
         for line in f:
             line_element = line.rstrip('\n')
             result.append(line_element)
