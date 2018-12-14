@@ -6,6 +6,9 @@ import pickle
 import nltk.data
 import errno
 from nltk.corpus import stopwords
+from shutil import copyfile
+
+nltk.download("stopwords")
 
 def count_time(start):
     """
@@ -199,7 +202,8 @@ def input(input_folder,output_folder,k,processed_folder,dicts_folder,edges_folde
         else:
             end = min(n,i*m+m)
         for j in range(i*m,end):
-            os.system('cp "' + os.path.join(input_folder,A[j]) + '" "' + curr + '"')        
+            copyfile(os.path.join(input_folder,A[j]),os.path.join(curr,A[j]))
+            # os.system('cp "' + os.path.join(input_folder,A[j]) + '" "' + curr + '"')       
 
     return count
 
