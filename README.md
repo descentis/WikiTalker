@@ -88,5 +88,8 @@ Here starting from run_1, one output is merged at a time and output after each m
 #### Generate Networkx Graph
 To generate a networkx graph, execute **generate_networkx_graph.py**. This will output a pickle file for our networkx graph, ***concept_graph.gpickle***.
 
+## Concept Graph on Proper Nouns
+Replace the **util.py** with **proper_nouns/util.py**
+
 ## Wikipedia Data
 To get all the article's text data from wikipedia, run **wiki_xml_parser/wiki_extractor.py**, keep your xml file in same directory.
