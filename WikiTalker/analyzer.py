@@ -21,3 +21,12 @@ def putInDatabase(collection_name, file_name, myclient, mongoClientDB):
 			data[i] += "\"}"
 		ins = json.loads(data[i])
 		collection.insert(ins)
+
+class Analyzer:
+
+
+
+	def __init__(self, myclient, mongoClientDB):
+		self.myclient = myclient
+		self.mongoClientDB = mongoClientDB
+		self.dataCollectionName = None
