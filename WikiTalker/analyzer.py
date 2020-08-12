@@ -30,3 +30,10 @@ class Analyzer:
 		self.myclient = myclient
 		self.mongoClientDB = mongoClientDB
 		self.dataCollectionName = None
+
+	def download_file(self, filename):
+		file = filename
+		url = 'https://wikitalkpages.s3.ap-south-1.amazonaws.com/' + file +'.json'
+		r = requests.get(url, allow_redirects=True)
+		json_file = file + '.json'
+		open(filename, 'wb').write(r.content)
