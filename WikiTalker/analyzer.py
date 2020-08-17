@@ -47,3 +47,14 @@ class Analyzer:
 				data[i] += "\"}"
 			ins = json.loads(data[i])
 			collection.insert(ins)
+
+
+	def deleteCollection(self, collection_name):
+		collection = self.mongoClientDB[collection_name]
+		collection.drop()
+
+
+
+	def downloadAndLoad(self, collection_name, filename):
+		self.download_file(filename)
+		self.putInDatabase(collection_name, filename)
