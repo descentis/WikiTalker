@@ -37,3 +37,13 @@ class Analyzer:
 		r = requests.get(url, allow_redirects=True)
 		json_file = file + '.json'
 		open(filename, 'wb').write(r.content)
+
+	def putInDatabase(self, collection_name, file_name):
+		collection = self.mongoClientDB[collection_name]
+		json_file = open(file_name)
+		data = json_file.read().strip("[]").split("\"},")
+		for i in range(len(data)):
+			if i != len(data)-1:
+				data[i] += "\"}"
+			ins = json.loads(data[i])
+			collection.insert(ins)
