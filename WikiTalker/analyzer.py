@@ -58,3 +58,16 @@ class Analyzer:
 	def downloadAndLoad(self, collection_name, filename):
 		self.download_file(filename)
 		self.putInDatabase(collection_name, filename)
+
+
+	def setCollectionName(self, dataCollectionName):
+		self.dataCollectionName = dataCollectionName
+
+
+
+	def getAlldata(self):
+		mycol = self.mongoClientDB[self.dataCollectionName]
+		arr = []
+		for x in mycol.find():
+		 	arr.append(x)
+		return arr
