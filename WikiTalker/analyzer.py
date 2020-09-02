@@ -81,3 +81,12 @@ class Analyzer:
 	def getAllAuthors(self):
 		mycol = self.mongoClientDB[self.dataCollectionName]
 		return mycol.distinct('user')
+    
+	def allAuthorsContribution(self):
+		mycol = self.mongoClientDB[self.dataCollectionName]
+		pipeline = {"$group":{"_id":"$user", "count":{"$sum":1}}}
+		dictionary = mycol.aggregate([pipeline])
+		answer = {}
+		for item in dictionary:
+			answer[item["_id"]] = item["count"]
+		return answer
