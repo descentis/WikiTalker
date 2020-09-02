@@ -71,3 +71,13 @@ class Analyzer:
 		for x in mycol.find():
 		 	arr.append(x)
 		return arr
+
+	def totalNumberOfComments(self):
+		mycol = self.mongoClientDB[self.dataCollectionName]
+		return mycol.count()
+
+
+
+	def getAllAuthors(self):
+		mycol = self.mongoClientDB[self.dataCollectionName]
+		return mycol.distinct('user')
