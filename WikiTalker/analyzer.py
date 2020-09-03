@@ -90,3 +90,15 @@ class Analyzer:
 		for item in dictionary:
 			answer[item["_id"]] = item["count"]
 		return answer
+
+	def getTopNContributors(self, n):
+		authors = self.allAuthorsContribution()
+		sorted_d = dict(sorted(authors.items(), key=operator.itemgetter(1),reverse=True))
+		new_dict = {}
+		num = 0
+		for key, val in sorted_d.items():
+			if num == n:
+				break
+			num += 1
+			new_dict[key] = val
+		return new_dict
