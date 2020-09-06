@@ -152,3 +152,21 @@ class Analyzer:
 		dictionary['count'] = count
 		dictionary['variance'] = variance
 		return dictionary
+    
+	def showCommentsStatistics(self, numBucket):
+		dictionary = self.allCommentStatistics()
+		numberOfBuckets = float(numBucket)
+		bucketLength = float(dictionary['max_len'] - dictionary['min_len']) / numBucket
+		blocks = [0 for k in range(numBucket+1)]
+		all_data = self.getAlldata()
+		min_len = dictionary['min_len']
+
+		for item in all_data:
+			x = len(item['text'])
+			blocks[int((x - min_len)/bucketLength)] += 1
+
+		plt.xlabel('Length of comment')
+		plt.ylabel('Comment Length Frequency')
+
+		plt.bar([i+1 for i in range(numBucket+1)], blocks, width=0.8, bottom=None, align='center')
+		plt.show()
