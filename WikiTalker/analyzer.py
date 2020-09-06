@@ -114,3 +114,41 @@ class Analyzer:
 			num += 1
 			new_dict[key] = val
 		return new_dict
+    
+	def allCommentStatistics(self):
+		dictionary = {}
+		min_len = 999999999999999 # Done
+		max_len = 0 # Done
+		avg = 0  # Done
+		totalLen = 0  # Done
+		standardDev = 0 # Done
+		count = 0  # Done
+		variance = 0 # Done
+
+		all_data = self.getAlldata()
+
+		for item in all_data:
+			count += 1
+			x = len(item['text'])
+			if x < min_len:
+				min_len = x
+			if x > max_len:
+				max_len = x
+			totalLen += x
+		
+		avg = float(totalLen) / float(count)
+		value = 0
+		for item in all_data:
+			x = len(item['text'])
+			value += (x - avg) * (x - avg)
+		variance = float(value) / float(count)
+		standardDev = math.sqrt(variance)
+
+		dictionary['min_len'] = min_len
+		dictionary['max_len'] = max_len
+		dictionary['avg'] = avg
+		dictionary['totalLen'] = totalLen
+		dictionary['standardDev'] = standardDev
+		dictionary['count'] = count
+		dictionary['variance'] = variance
+		return dictionary
