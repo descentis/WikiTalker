@@ -170,3 +170,7 @@ class Analyzer:
 
 		plt.bar([i+1 for i in range(numBucket+1)], blocks, width=0.8, bottom=None, align='center')
 		plt.show()
+
+	def getAllRevisionIds(self):
+		mycol = self.mongoClientDB[self.dataCollectionName]
+		return mycol.distinct('revision_id')
