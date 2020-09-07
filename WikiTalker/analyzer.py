@@ -193,3 +193,15 @@ class Analyzer:
 		for key, val in dictionary.items():
 			dictionary[key] = len(val)
 		return dictionary
+
+	def getTopNRevisions(self, n):
+		authors = self.commentCountByRevisionId()
+		sorted_d = dict(sorted(authors.items(), key=operator.itemgetter(1),reverse=True))
+		new_dict = {}
+		num = 0
+		for key, val in sorted_d.items():
+			if num == n:
+				break
+			num += 1
+			new_dict[key] = val
+		return new_dict
