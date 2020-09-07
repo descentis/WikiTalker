@@ -187,3 +187,9 @@ class Analyzer:
 			dictionary[item['revision_id']].append(item)
 
 		return dictionary
+    
+	def commentCountByRevisionId(self):
+		dictionary = self.commentDictionaryRevisionId()
+		for key, val in dictionary.items():
+			dictionary[key] = len(val)
+		return dictionary
