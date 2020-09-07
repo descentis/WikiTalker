@@ -222,3 +222,23 @@ class Analyzer:
 		mycol = self.mongoClientDB[self.dataCollectionName]
 		rev_id_comments = mycol.find({"revision_id": revisionId})
 		return list(rev_id_comments)
+
+	def getDepthOfCommentsInRevision(self, revisionId):
+		arr = self.commentsFilterByRevisionId(revisionId)
+		dictionary = {}
+
+		for item in arr:
+			dictionary[item['id']] = item['parent_id']
+
+		keys = list(dictionary.keys())
+		depth_dict = {}
+
+		for key, val in dictionary.items():
+			depth_dict[key] = 1
+
+		for item in keys:
+			it = item
+			while dictionary[it] != 0:
+				depth_dict[item] += 1
+				it = dictionary[it]
+		return depth_dict
