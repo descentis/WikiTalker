@@ -174,3 +174,16 @@ class Analyzer:
 	def getAllRevisionIds(self):
 		mycol = self.mongoClientDB[self.dataCollectionName]
 		return mycol.distinct('revision_id')
+
+	def commentDictionaryRevisionId(self):
+		rev_id = self.getAllRevisionIds()
+		dictionary = {}
+
+		for item in rev_id:
+			dictionary[item] = []
+		all_data = self.getAlldata()
+
+		for item in all_data:
+			dictionary[item['revision_id']].append(item)
+
+		return dictionary
