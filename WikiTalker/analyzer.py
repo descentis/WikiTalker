@@ -217,3 +217,8 @@ class Analyzer:
 			num += 1
 			new_dict[key] = val
 		return new_dict
+
+	def commentsFilterByRevisionId(self, revisionId):
+		mycol = self.mongoClientDB[self.dataCollectionName]
+		rev_id_comments = mycol.find({"revision_id": revisionId})
+		return list(rev_id_comments)
