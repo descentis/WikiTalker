@@ -310,3 +310,12 @@ class Analyzer:
 	def commentsFilterBySection(self, sectionName):
 		mycol = self.mongoClientDB[self.dataCollectionName]
 		return list(mycol.find({"section":sectionName}))
+
+	def getSectionwiseCommentCount(self):
+		mycol = self.mongoClientDB[self.dataCollectionName]
+		pipeline = {"$group":{"_id":"$section", "count":{"$sum":1}}}
+		dictionary = mycol.aggregate([pipeline])
+		answer = {}
+		for item in dictionary:
+			answer[item["_id"]] = item["count"]
+		return answer
