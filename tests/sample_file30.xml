@@ -1,0 +1,22 @@
+<page>
+    <title>Talk:Sayyid Mar'ashi Najafi</title>
+    <ns>1</ns>
+    <id>47971470</id>
+    <redirect title="Talk:Shahab ud-Din Mar&#039;ashi Najafi" />
+    <revision>
+      <id>888922993</id>
+      <parentid>697737673</parentid>
+      <timestamp>2019-03-22T07:22:49Z</timestamp>
+      <contributor>
+        <username>Xqbot</username>
+        <id>8066546</id>
+      </contributor>
+      <minor />
+      <comment>Bot: Fixing double redirect to [[Talk:Shahab ud-Din Mar'ashi Najafi]]</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">#REDIRECT [[Talk:Shahab ud-Din Mar'ashi Najafi]]
+{{R from move}}</text>
+      <sha1>tdemrhw5u0ar4mki0ti2q3ebfrzsyjt</sha1>
+    </revision>
+  </page>

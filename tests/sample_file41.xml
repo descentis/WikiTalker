@@ -1,0 +1,27 @@
+<page>
+    <title>Talk:Russian monitor Admiral Spiridov</title>
+    <ns>1</ns>
+    <id>47216216</id>
+    <revision>
+      <id>678141265</id>
+      <parentid>675336955</parentid>
+      <timestamp>2015-08-27T16:37:13Z</timestamp>
+      <contributor>
+        <username>Legobot</username>
+        <id>7304691</id>
+      </contributor>
+      <minor />
+      <comment>BOT: Adding |oldid=675338414 to {{[[Template:GA|GA]]}}</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">{{GA|23:46, 9 August 2015 (UTC)|topic=Warfare|page=1|oldid=675338414}}
+{{WikiProjectBannerShell|1=
+{{MILHIST|class=GA|B1=y|B2=y|B3=y|B4=y|B5=y|Maritime=y|Russian=y}}
+{{WikiProject Ships|class=GA|B1=y|B2=y|B3=y|B4=y|B5=y}}
+{{WikiProject Russia|class=GA|importance=low|needs-Cyrillic=y|B-Class-1=y|B-Class-2=y|B-Class-3=y|B-Class-4=y|B-Class-5=y}}
+}}
+
+{{Talk:Russian monitor Admiral Spiridov/GA1}}</text>
+      <sha1>kas702rbrgk62dgex9e2hmn6xhk07qt</sha1>
+    </revision>
+  </page>

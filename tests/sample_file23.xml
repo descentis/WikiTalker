@@ -1,0 +1,21 @@
+<page>
+    <title>Talk:1994-1996 United States broadcast TV realignment</title>
+    <ns>1</ns>
+    <id>60034137</id>
+    <redirect title="Talk:1994–1996 United States broadcast TV realignment" />
+    <revision>
+      <id>884375654</id>
+      <timestamp>2019-02-21T06:32:26Z</timestamp>
+      <contributor>
+        <username>AnomieBOT</username>
+        <id>7611264</id>
+      </contributor>
+      <comment>Redirecting to [[:Talk:1994–1996 United States broadcast TV realignment]] because titles with en-dashes are hard to type.  Errors? [[User:AnomieBOT/shutoff/EnDashRedirectCreator]]</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">#REDIRECT [[:Talk:1994–1996 United States broadcast TV realignment]]
+{{Redirect shell|{{R from modification|1={{-r|Talk:1994–1996 United States broadcast TV realignment}}}}}}
+{{User:AnomieBOT/Auto-G8|target=Talk:1994–1996 United States broadcast TV realignment}}</text>
+      <sha1>qjb38uirrhldj5a0m8arg45iwgb6hbj</sha1>
+    </revision>
+  </page>

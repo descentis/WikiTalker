@@ -242,3 +242,24 @@ class Analyzer:
 				depth_dict[item] += 1
 				it = dictionary[it]
 		return depth_dict
+
+	def getDepthOfComment(self, id, revisionId):
+		arr = self.commentsFilterByRevisionId(revisionId)
+		dictionary = {}
+
+		for item in arr:
+			dictionary[item['id']] = item['parent_id']
+
+		keys = list(dictionary.keys())
+		depth_dict = {}
+
+		for key, val in dictionary.items():
+			depth_dict[key] = 1
+
+		for item in keys:
+			it = item
+			while dictionary[it] != 0:
+				depth_dict[item] += 1
+				it = dictionary[it]
+		print(depth_dict)
+		return depth_dict[id]

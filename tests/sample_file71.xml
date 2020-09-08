@@ -1,0 +1,26 @@
+<page>
+    <title>Talk:PAJAM</title>
+    <ns>1</ns>
+    <id>6514459</id>
+    <revision>
+      <id>742322285</id>
+      <parentid>515824761</parentid>
+      <timestamp>2016-10-03T01:15:22Z</timestamp>
+      <contributor>
+        <username>DepressedPer</username>
+        <id>4390460</id>
+      </contributor>
+      <comment>Tagged 2 WPs.</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">{{WikiProjectBannerShell|1=
+{{WikiProject Biography|living=yes|class=Stub
+|musician-priority=Low|musician-work-group=yes|listas=Pajam}}
+{{WikiProject Michigan|class=Stub|importance=Low}}
+{{WikiProject R&amp;B and Soul Music|class=Stub|importance=Low}}
+{{WikiProject Record Production|class=Stub|importance=Low}}
+}}
+{{oldafdfull|date=2006 August 16|result='''keep'''|page=PAJAM}}</text>
+      <sha1>57rynv2s5eztga395th330zo04kqahr</sha1>
+    </revision>
+  </page>

@@ -1,0 +1,21 @@
+<page>
+    <title>Talk:Kundapura (film)</title>
+    <ns>1</ns>
+    <id>40008687</id>
+    <redirect title="Talk:Kunthapura" />
+    <revision>
+      <id>629789071</id>
+      <parentid>564898168</parentid>
+      <timestamp>2014-10-16T00:51:26Z</timestamp>
+      <contributor>
+        <username>Invadibot</username>
+        <id>15934865</id>
+      </contributor>
+      <minor />
+      <comment>Bot: Fixing double redirect to [[Talk:Kunthapura]]</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">#REDIRECT [[Talk:Kunthapura]]</text>
+      <sha1>ma9nofxqhxw3s85r0grr061ombzf92h</sha1>
+    </revision>
+  </page>

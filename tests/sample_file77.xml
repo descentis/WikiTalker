@@ -1,0 +1,21 @@
+<page>
+    <title>Talk:Boolean algebra (introduction)</title>
+    <ns>1</ns>
+    <id>24395383</id>
+    <redirect title="Talk:Boolean algebra" />
+    <revision>
+      <id>417402191</id>
+      <parentid>316252050</parentid>
+      <timestamp>2011-03-06T09:25:36Z</timestamp>
+      <contributor>
+        <username>Xqbot</username>
+        <id>8066546</id>
+      </contributor>
+      <minor />
+      <comment>Bot: Fixing double redirect to [[Talk:Boolean algebra]]</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">#REDIRECT [[Talk:Boolean algebra]]</text>
+      <sha1>gybx96wn85ju87uanzlo62wj373l99z</sha1>
+    </revision>
+  </page>

@@ -1,0 +1,32 @@
+<page>
+    <title>Talk:Gwyn Manning</title>
+    <ns>1</ns>
+    <id>25022841</id>
+    <revision>
+      <id>513157287</id>
+      <parentid>496644144</parentid>
+      <timestamp>2012-09-17T13:33:25Z</timestamp>
+      <contributor>
+        <username>Yobot</username>
+        <id>7328338</id>
+      </contributor>
+      <minor />
+      <comment>WPBIO banner fixes + cleanup (Task: 17) using [[Project:AWB|AWB]] (8413)</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">{{WikiProjectBannerShell|1=
+{{WikiProject Biography
+|living=no
+|class=Stub
+|listas=Manning, George
+}}
+{{WikiProject Olympics|class=Stub|importance=}}
+{{WikiProject Football|class=Stub
+|importance=low
+|Wales=yes
+
+}}
+}}</text>
+      <sha1>tkkywef9cyego3tijch59e8iufe1bqt</sha1>
+    </revision>
+  </page>

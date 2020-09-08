@@ -1,0 +1,44 @@
+<page>
+    <title>Talk:Marvel Studios</title>
+    <ns>1</ns>
+    <id>1269833</id>
+    <revision>
+      <id>921461290</id>
+      <parentid>921179064</parentid>
+      <timestamp>2019-10-15T21:30:18Z</timestamp>
+      <contributor>
+        <username>Rfl0216</username>
+        <id>27738727</id>
+      </contributor>
+      <comment>Assessment: United States (C/Low) ([[User:Evad37/rater.js|Rater]])</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">{{Talk header}}
+{{User:MiszaBot/config
+|archiveheader = {{aan}}
+|maxarchivesize = 100K
+|counter = 3
+|minthreadsleft = 2
+|minthreadstoarchive = 1
+|algo = old(90d)
+|archive = Talk:Marvel Studios/Archive %(counter)d
+}}
+{{WikiProjectBannerShell|1=
+{{WikiProject Film |American-task-force=yes |class=C |B-Class-1 &lt;!-- Referencing &amp; citations --&gt;=yes |B-Class-2 &lt;!-- Coverage &amp; accuracy     --&gt;=no |B-Class-3 &lt;!-- Structure               --&gt;=yes |B-Class-4 &lt;!-- Grammar                 --&gt;= |B-Class-5 &lt;!-- Supporting materials    --&gt;=yes |Comic-book-task-force=yes}}
+{{WikiProject Comics |Film=Yes |class=C |importance=mid |Marvel-work-group=yes}}
+{{WikiProject Companies |class=C |importance=mid}}
+{{WikiProject Disney |class=C |importance=mid}}
+{{WikiProject United States |class=C |importance=Low |USfilm=yes}}
+}}
+
+== Marvel Music Tag ==
+
+Cut a lot of excess details that weren't supported by primary sources. Changed language to reflect the one sentence that still is. There isn't a ton of info on this out there. Edits should be sufficient to remove the tag, but let me know if anyone objects. [[User:Balle010|Balle010]] ([[User talk:Balle010|talk]]) 23:41, 23 June 2019 (UTC)
+
+== Marvel Entertainment doesn’t own this? ==
+
+Marvel Entertainment doesn’t own its own studio? [[User:HappyINC|&lt;span style=&quot;color:yellow;&quot;&gt;{{#if:|{{#ifexpr:({{#time:U|{{{3}}}}} - {{#time:U|now}}) &gt; 0|{{highlight/core|''Happy''|{{#ifeq:blue||yellow|blue}}}}|''Happy''}}|{{highlight/core|''Happy''|blue}}}}&lt;/span&gt;&lt;span style=&quot;color:cyan;&quot;&gt;'''INC'''&lt;/span&gt;]] ([[User talk:HappyINC|💬]]) 03:18, 27 July 2019 (UTC)
+:Correct. ''Vanity Fair'' ran [https://www.vanityfair.com/hollywood/2015/09/marvel-studios-ike-perlmutter-kevin-feige a story] at the time to try to give fans the full context of what was going on. --[[User:Coolcaesar|Coolcaesar]] ([[User talk:Coolcaesar|talk]]) 09:35, 28 July 2019 (UTC)</text>
+      <sha1>1ikn1n8kv44ks6761qlln3i7eyz60br</sha1>
+    </revision>
+  </page>

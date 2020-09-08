@@ -1,0 +1,21 @@
+<page>
+    <title>Talk:Valea Mare River (Râul Negru)</title>
+    <ns>1</ns>
+    <id>16857915</id>
+    <revision>
+      <id>615463574</id>
+      <parentid>249621461</parentid>
+      <timestamp>2014-07-03T17:59:03Z</timestamp>
+      <contributor>
+        <username>Mdann52 bot</username>
+        <id>19895351</id>
+      </contributor>
+      <minor />
+      <comment>[[Wikipedia:Bots/Requests for approval/Mdann52 bot|task 4]] updating WikiProject importance using [[Project:AWB|AWB]]</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">{{WikiProject Romania|class=Stub|importance=low}}
+{{WikiProject Rivers|class=stub|importance=low}}</text>
+      <sha1>g14k1lwgvoa2v2lwou28w62r1e750ju</sha1>
+    </revision>
+  </page>

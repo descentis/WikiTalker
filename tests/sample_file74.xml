@@ -1,0 +1,21 @@
+<page>
+    <title>User:ClueBot III/Master Detailed Indices/Talk:Medifast</title>
+    <ns>2</ns>
+    <id>48588850</id>
+    <revision>
+      <id>691265285</id>
+      <timestamp>2015-11-18T18:40:01Z</timestamp>
+      <contributor>
+        <username>ClueBot III</username>
+        <id>5207410</id>
+      </contributor>
+      <comment>Setting detailed index for [[Talk:Medifast]]. (BOT)</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">{|class=&quot;wikitable sortable&quot;
+! Order !! Header !! Start Date !! End Date !! Comments !! Size !! Archive
+{{User:ClueBot III/Detailed Indices/Talk:Medifast/Archives/2012}}
+|}</text>
+      <sha1>9eulxybvx06awha44kjv8hny1qpjb0k</sha1>
+    </revision>
+  </page>

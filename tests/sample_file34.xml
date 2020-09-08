@@ -1,0 +1,35 @@
+<page>
+    <title>Talk:Meckelia griseicolle</title>
+    <ns>1</ns>
+    <id>37231808</id>
+    <revision>
+      <id>919642659</id>
+      <parentid>784245040</parentid>
+      <timestamp>2019-10-04T20:56:14Z</timestamp>
+      <contributor>
+        <username>AnomieBOT</username>
+        <id>7611264</id>
+      </contributor>
+      <minor />
+      <comment>Tagging with {{WikiProject Diptera}} per [[User:AnomieBOT/req/WikiProject Diptera|request]]. Errors? [[User:AnomieBOT/shutoff/WikiProjectWorker]]</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve">{{WikiProject Insects|class=stub|importance=low}}
+{{WikiProject Diptera|class=stub|auto=stub|importance=}}
+
+== External links modified ==
+
+Hello fellow Wikipedians,
+
+I have just modified 2 external links on [[Meckelia griseicolle]]. Please take a moment to review [https://en.wikipedia.org/w/index.php?diff=prev&amp;oldid=784245039 my edit]. If you have any questions, or need the bot to ignore the links, or the page altogether, please visit [[User:Cyberpower678/FaQs#InternetArchiveBot|this simple FaQ]] for additional information. I made the following changes:
+*Added archive https://web.archive.org/web/20090312100559/http://www.itis.gov/servlet/SingleRpt/SingleRpt to http://www.itis.gov/servlet/SingleRpt/SingleRpt
+*Added archive https://web.archive.org/web/20150327011528/http://data.gbif.org/species/browse/taxon/13143053 to http://data.gbif.org/species/browse/taxon/13143053
+
+When you have finished reviewing my changes, you may follow the instructions on the template below to fix any issues with the URLs.
+
+{{sourcecheck|checked=false|needhelp=}}
+
+Cheers.—[[User:InternetArchiveBot|'''&lt;span style=&quot;color:darkgrey;font-family:monospace&quot;&gt;InternetArchiveBot&lt;/span&gt;''']] &lt;span style=&quot;color:green;font-family:Rockwell&quot;&gt;([[User talk:InternetArchiveBot|Report bug]])&lt;/span&gt; 07:31, 7 June 2017 (UTC)</text>
+      <sha1>4o6tjx4xyc0cbktxnah2nwx9utiaxlp</sha1>
+    </revision>
+  </page>
