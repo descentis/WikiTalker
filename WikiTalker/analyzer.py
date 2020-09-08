@@ -319,3 +319,42 @@ class Analyzer:
 		for item in dictionary:
 			answer[item["_id"]] = item["count"]
 		return answer
+
+	def showSectionsStatistics(self):
+		dictionary = self.getSectionwiseCommentCount()
+		
+		arr = []
+		for key, val in dictionary.items():
+			arr.append(val)
+
+		dictionary = {}
+		min_len = 999999999999999 # Done
+		max_len = 0 # Done
+		avg = 0  # Done
+		totalLen = 0  # Done
+		standardDev = 0 # Done
+		count = len(arr)  # Done
+		variance = 0 # Done
+
+		for item in arr:
+			if item < min_len:
+				min_len = item
+			if item > max_len:
+				max_len = item
+			totalLen += item
+
+		avg = float(totalLen) / float(count)
+
+		for item in arr:
+			variance += (item - avg) * (item - avg)
+
+		variance = float(variance) / float(count)
+		standardDev = math.sqrt(variance)
+
+		dictionary['min_len'] = min_len
+		dictionary['max_len'] = max_len
+		dictionary['avg'] = avg
+		dictionary['standardDev'] = standardDev
+		dictionary['count'] = count
+		dictionary['variance'] = variance
+		return dictionary
