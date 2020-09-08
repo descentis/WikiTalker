@@ -306,3 +306,7 @@ class Analyzer:
 	def getAllSections(self):
 		mycol = self.mongoClientDB[self.dataCollectionName]
 		return mycol.distinct('section')
+
+	def commentsFilterBySection(self, sectionName):
+		mycol = self.mongoClientDB[self.dataCollectionName]
+		return list(mycol.find({"section":sectionName}))
