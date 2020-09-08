@@ -302,3 +302,7 @@ class Analyzer:
 		dictionary['count'] = count
 		dictionary['variance'] = variance
 		return dictionary
+
+	def getAllSections(self):
+		mycol = self.mongoClientDB[self.dataCollectionName]
+		return mycol.distinct('section')
