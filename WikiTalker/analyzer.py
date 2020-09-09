@@ -358,3 +358,21 @@ class Analyzer:
 		dictionary['count'] = count
 		dictionary['variance'] = variance
 		return dictionary
+
+if __name__ == '__main__':
+
+	myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+	mongoClientDB = myclient['mywikidump']
+
+	analyzer = Analyzer(myclient, mongoClientDB)
+
+	analyzer.downloadAndLoad('Indian_Institute_of_Technology_Ropar', 'Indian_Institute_of_Technology_Ropar')
+
+	"""
+	analyzer.deleteCollection('Indian_Institute_of_Technology_Ropar')
+	analyzer.deleteCollection('Animal')
+	analyzer.deleteCollection('Taj_Mahal')
+	analyzer.deleteCollection('United_States')
+	analyzer.deleteCollection('World_Wide_Web')
+	analyzer.deleteCollection('mywikicollection')
+	"""
