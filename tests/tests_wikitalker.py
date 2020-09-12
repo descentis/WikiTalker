@@ -11,11 +11,15 @@ import subprocess
 import shlex
 import os
 
-'''
+
 with open('/media/descentis/0FC10BE60FC10BE6/WikipediaData/CurrentRevision/all_talk_pages/file_id.txt','r') as myFile:
     for line in myFile:
+        file_param = line.split('$@$')
         
 
+
+        
+'''
 count = 0
 with open('/media/descentis/0FC10BE60FC10BE6/WikipediaData/CurrentRevision/all_talk_pages/all_talk_pages.txt', 'r') as myFile:
     for line in myFile:
@@ -27,6 +31,7 @@ with open('/media/descentis/0FC10BE60FC10BE6/WikipediaData/CurrentRevision/all_t
         
         if count == 100:
             break
+'''
 '''
 cwd = os.getcwd()
 
@@ -64,6 +69,7 @@ with open('file_id.txt', 'a') as myFile:
     myFile.write(str(start)+'\n')
 
 subprocess.call(shlex.split('rm sample.json'))
+'''
 
 '''
 file_list = glob.glob('*.xml')
