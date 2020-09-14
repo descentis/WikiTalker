@@ -60,7 +60,7 @@ class Analyzer:
             if i != len(data)-1:
                 data[i] += "\"}"
             ins = json.loads(data[i])
-            collection.insert(ins)
+            collection.insert_one(ins)
 
     def deleteCollection(self, collection_name):
         collection = self.mongoClientDB[collection_name]
@@ -84,292 +84,292 @@ class Analyzer:
         mycol = self.mongoClientDB[self.dataCollectionName]
         return mycol.count()
 
-        def getAllAuthors(self):
-            mycol = self.mongoClientDB[self.dataCollectionName]
-            return mycol.distinct('user')
+    def getAllAuthors(self):
+        mycol = self.mongoClientDB[self.dataCollectionName]
+        return mycol.distinct('user')
 
-        def allAuthorsContribution(self):
-            mycol = self.mongoClientDB[self.dataCollectionName]
-            pipeline = {"$group": {"_id": "$user", "count": {"$sum": 1}}}
-            dictionary = mycol.aggregate([pipeline])
-            answer = {}
-            for item in dictionary:
-                answer[item["_id"]] = item["count"]
-            return answer
+    def allAuthorsContribution(self):
+        mycol = self.mongoClientDB[self.dataCollectionName]
+        pipeline = {"$group": {"_id": "$user", "count": {"$sum": 1}}}
+        dictionary = mycol.aggregate([pipeline])
+        answer = {}
+        for item in dictionary:
+            answer[item["_id"]] = item["count"]
+        return answer
 
-        def getTopNContributors(self, n):
-            authors = self.allAuthorsContribution()
-            sorted_d = dict(
-                sorted(authors.items(), key=operator.itemgetter(1), reverse=True))
-            new_dict = {}
-            num = 0
-            for key, val in sorted_d.items():
-                if num == n:
-                    break
-                num += 1
-                new_dict[key] = val
-            return new_dict
+    def getTopNContributors(self, n):
+        authors = self.allAuthorsContribution()
+        sorted_d = dict(
+            sorted(authors.items(), key=operator.itemgetter(1), reverse=True))
+        new_dict = {}
+        num = 0
+        for key, val in sorted_d.items():
+            if num == n:
+                break
+            num += 1
+            new_dict[key] = val
+        return new_dict
 
-        def getLeastNContributors(self, n):
-            authors = self.allAuthorsContribution()
-            sorted_d = dict(
-                sorted(authors.items(), key=operator.itemgetter(1), reverse=False))
-            new_dict = {}
-            num = 0
-            for key, val in sorted_d.items():
-                if num == n:
-                    break
-                num += 1
-                new_dict[key] = val
-            return new_dict
+    def getLeastNContributors(self, n):
+        authors = self.allAuthorsContribution()
+        sorted_d = dict(
+            sorted(authors.items(), key=operator.itemgetter(1), reverse=False))
+        new_dict = {}
+        num = 0
+        for key, val in sorted_d.items():
+            if num == n:
+                break
+            num += 1
+            new_dict[key] = val
+        return new_dict
 
-        def allCommentStatistics(self):
-            dictionary = {}
-            min_len = 999999999999999  # Done
-            max_len = 0  # Done
-            avg = 0  # Done
-            totalLen = 0  # Done
-            standardDev = 0  # Done
-            count = 0  # Done
-            variance = 0  # Done
+    def allCommentStatistics(self):
+        dictionary = {}
+        min_len = 999999999999999  # Done
+        max_len = 0  # Done
+        avg = 0  # Done
+        totalLen = 0  # Done
+        standardDev = 0  # Done
+        count = 0  # Done
+        variance = 0  # Done
 
-            all_data = self.getAlldata()
+        all_data = self.getAlldata()
 
-            for item in all_data:
-                count += 1
-                x = len(item['text'])
-                if x < min_len:
-                    min_len = x
-                if x > max_len:
-                    max_len = x
-                totalLen += x
+        for item in all_data:
+            count += 1
+            x = len(item['text'])
+            if x < min_len:
+                min_len = x
+            if x > max_len:
+                max_len = x
+            totalLen += x
 
-            avg = float(totalLen) / float(count)
-            value = 0
-            for item in all_data:
-                x = len(item['text'])
-                value += (x - avg) * (x - avg)
-            variance = float(value) / float(count)
-            standardDev = math.sqrt(variance)
+        avg = float(totalLen) / float(count)
+        value = 0
+        for item in all_data:
+            x = len(item['text'])
+            value += (x - avg) * (x - avg)
+        variance = float(value) / float(count)
+        standardDev = math.sqrt(variance)
 
-            dictionary['min_len'] = min_len
-            dictionary['max_len'] = max_len
-            dictionary['avg'] = avg
-            dictionary['totalLen'] = totalLen
-            dictionary['standardDev'] = standardDev
-            dictionary['count'] = count
-            dictionary['variance'] = variance
-            return dictionary
+        dictionary['min_len'] = min_len
+        dictionary['max_len'] = max_len
+        dictionary['avg'] = avg
+        dictionary['totalLen'] = totalLen
+        dictionary['standardDev'] = standardDev
+        dictionary['count'] = count
+        dictionary['variance'] = variance
+        return dictionary
 
-        def showCommentsStatistics(self, numBucket):
-            dictionary = self.allCommentStatistics()
-            numberOfBuckets = float(numBucket)
-            bucketLength = float(
-                dictionary['max_len'] - dictionary['min_len']) / numBucket
-            blocks = [0 for k in range(numBucket+1)]
-            all_data = self.getAlldata()
-            min_len = dictionary['min_len']
+    def showCommentsStatistics(self, numBucket):
+        dictionary = self.allCommentStatistics()
+        numberOfBuckets = float(numBucket)
+        bucketLength = float(
+            dictionary['max_len'] - dictionary['min_len']) / numBucket
+        blocks = [0 for k in range(numBucket+1)]
+        all_data = self.getAlldata()
+        min_len = dictionary['min_len']
 
-            for item in all_data:
-                x = len(item['text'])
-                blocks[int((x - min_len)/bucketLength)] += 1
+        for item in all_data:
+            x = len(item['text'])
+            blocks[int((x - min_len)/bucketLength)] += 1
 
-            plt.xlabel('Length of comment')
-            plt.ylabel('Comment Length Frequency')
+        plt.xlabel('Length of comment')
+        plt.ylabel('Comment Length Frequency')
 
-            plt.bar([i+1 for i in range(numBucket+1)], blocks,
-                    width=0.8, bottom=None, align='center')
-            plt.show()
+        plt.bar([i+1 for i in range(numBucket+1)], blocks,
+                width=0.8, bottom=None, align='center')
+        plt.show()
 
-        def getAllRevisionIds(self):
-            mycol = self.mongoClientDB[self.dataCollectionName]
-            return mycol.distinct('revision_id')
+    def getAllRevisionIds(self):
+        mycol = self.mongoClientDB[self.dataCollectionName]
+        return mycol.distinct('revision_id')
 
-        def commentDictionaryRevisionId(self):
-            rev_id = self.getAllRevisionIds()
-            dictionary = {}
+    def commentDictionaryRevisionId(self):
+        rev_id = self.getAllRevisionIds()
+        dictionary = {}
 
-            for item in rev_id:
-                dictionary[item] = []
-            all_data = self.getAlldata()
+        for item in rev_id:
+            dictionary[item] = []
+        all_data = self.getAlldata()
 
-            for item in all_data:
-                dictionary[item['revision_id']].append(item)
+        for item in all_data:
+            dictionary[item['revision_id']].append(item)
 
-            return dictionary
+        return dictionary
 
-        def commentCountByRevisionId(self):
-            dictionary = self.commentDictionaryRevisionId()
-            for key, val in dictionary.items():
-                dictionary[key] = len(val)
-            return dictionary
+    def commentCountByRevisionId(self):
+        dictionary = self.commentDictionaryRevisionId()
+        for key, val in dictionary.items():
+            dictionary[key] = len(val)
+        return dictionary
 
-        def getTopNRevisions(self, n):
-            authors = self.commentCountByRevisionId()
-            sorted_d = dict(
-                sorted(authors.items(), key=operator.itemgetter(1), reverse=True))
-            new_dict = {}
-            num = 0
-            for key, val in sorted_d.items():
-                if num == n:
-                    break
-                num += 1
-                new_dict[key] = val
-            return new_dict
+    def getTopNRevisions(self, n):
+        authors = self.commentCountByRevisionId()
+        sorted_d = dict(
+            sorted(authors.items(), key=operator.itemgetter(1), reverse=True))
+        new_dict = {}
+        num = 0
+        for key, val in sorted_d.items():
+            if num == n:
+                break
+            num += 1
+            new_dict[key] = val
+        return new_dict
 
-        def getLeastNRevisions(self, n):
-            authors = self.commentCountByRevisionId()
-            sorted_d = dict(
-                sorted(authors.items(), key=operator.itemgetter(1), reverse=False))
-            new_dict = {}
-            num = 0
-            for key, val in sorted_d.items():
-                if num == n:
-                    break
-                num += 1
-                new_dict[key] = val
-            return new_dict
+    def getLeastNRevisions(self, n):
+        authors = self.commentCountByRevisionId()
+        sorted_d = dict(
+            sorted(authors.items(), key=operator.itemgetter(1), reverse=False))
+        new_dict = {}
+        num = 0
+        for key, val in sorted_d.items():
+            if num == n:
+                break
+            num += 1
+            new_dict[key] = val
+        return new_dict
 
-        def commentsFilterByRevisionId(self, revisionId):
-            mycol = self.mongoClientDB[self.dataCollectionName]
-            rev_id_comments = mycol.find({"revision_id": revisionId})
-            return list(rev_id_comments)
+    def commentsFilterByRevisionId(self, revisionId):
+        mycol = self.mongoClientDB[self.dataCollectionName]
+        rev_id_comments = mycol.find({"revision_id": revisionId})
+        return list(rev_id_comments)
 
-        def getDepthOfCommentsInRevision(self, revisionId):
-            arr = self.commentsFilterByRevisionId(revisionId)
-            dictionary = {}
+    def getDepthOfCommentsInRevision(self, revisionId):
+        arr = self.commentsFilterByRevisionId(revisionId)
+        dictionary = {}
 
-            for item in arr:
-                dictionary[item['id']] = item['parent_id']
+        for item in arr:
+            dictionary[item['id']] = item['parent_id']
 
-            keys = list(dictionary.keys())
-            depth_dict = {}
+        keys = list(dictionary.keys())
+        depth_dict = {}
 
-            for key, val in dictionary.items():
-                depth_dict[key] = 1
+        for key, val in dictionary.items():
+            depth_dict[key] = 1
 
-            for item in keys:
-                it = item
-                while dictionary[it] != 0:
-                    depth_dict[item] += 1
-                    it = dictionary[it]
-            return depth_dict
+        for item in keys:
+            it = item
+            while dictionary[it] != 0:
+                depth_dict[item] += 1
+                it = dictionary[it]
+        return depth_dict
 
-        def getDepthOfComment(self, id, revisionId):
-            arr = self.commentsFilterByRevisionId(revisionId)
-            dictionary = {}
+    def getDepthOfComment(self, id, revisionId):
+        arr = self.commentsFilterByRevisionId(revisionId)
+        dictionary = {}
 
-            for item in arr:
-                dictionary[item['id']] = item['parent_id']
+        for item in arr:
+            dictionary[item['id']] = item['parent_id']
 
-            keys = list(dictionary.keys())
-            depth_dict = {}
+        keys = list(dictionary.keys())
+        depth_dict = {}
 
-            for key, val in dictionary.items():
-                depth_dict[key] = 1
+        for key, val in dictionary.items():
+            depth_dict[key] = 1
 
-            for item in keys:
-                it = item
-                while dictionary[it] != 0:
-                    depth_dict[item] += 1
-                    it = dictionary[it]
-            print(depth_dict)
-            return depth_dict[id]
+        for item in keys:
+            it = item
+            while dictionary[it] != 0:
+                depth_dict[item] += 1
+                it = dictionary[it]
+        print(depth_dict)
+        return depth_dict[id]
 
-        def depthStatisticsByRevisionId(self, revisionId):
-            dictionary = self.getDepthOfCommentsInRevision(revisionId)
-            arr = []
+    def depthStatisticsByRevisionId(self, revisionId):
+        dictionary = self.getDepthOfCommentsInRevision(revisionId)
+        arr = []
 
-            for key, val in dictionary.items():
-                arr.append(val)
+        for key, val in dictionary.items():
+            arr.append(val)
 
-            dictionary = {}
-            min_len = 999999999999999  # Done
-            max_len = 0  # Done
-            avg = 0  # Done
-            totalLen = 0  # Done
-            standardDev = 0  # Done
-            count = len(arr)  # Done
-            variance = 0  # Done
+        dictionary = {}
+        min_len = 999999999999999  # Done
+        max_len = 0  # Done
+        avg = 0  # Done
+        totalLen = 0  # Done
+        standardDev = 0  # Done
+        count = len(arr)  # Done
+        variance = 0  # Done
 
-            for item in arr:
-                if item < min_len:
-                    min_len = item
-                if item > max_len:
-                    max_len = item
-                totalLen += item
+        for item in arr:
+            if item < min_len:
+                min_len = item
+            if item > max_len:
+                max_len = item
+            totalLen += item
 
-            avg = float(totalLen) / float(count)
+        avg = float(totalLen) / float(count)
 
-            for item in arr:
-                variance += (item - avg) * (item - avg)
+        for item in arr:
+            variance += (item - avg) * (item - avg)
 
-            variance = float(variance) / float(count)
-            standardDev = math.sqrt(variance)
+        variance = float(variance) / float(count)
+        standardDev = math.sqrt(variance)
 
-            dictionary['min_len'] = min_len
-            dictionary['max_len'] = max_len
-            dictionary['avg'] = avg
-            dictionary['standardDev'] = standardDev
-            dictionary['count'] = count
-            dictionary['variance'] = variance
-            return dictionary
+        dictionary['min_len'] = min_len
+        dictionary['max_len'] = max_len
+        dictionary['avg'] = avg
+        dictionary['standardDev'] = standardDev
+        dictionary['count'] = count
+        dictionary['variance'] = variance
+        return dictionary
 
-        def getAllSections(self):
-            mycol = self.mongoClientDB[self.dataCollectionName]
-            return mycol.distinct('section')
+    def getAllSections(self):
+        mycol = self.mongoClientDB[self.dataCollectionName]
+        return mycol.distinct('section')
 
-        def commentsFilterBySection(self, sectionName):
-            mycol = self.mongoClientDB[self.dataCollectionName]
-            return list(mycol.find({"section": sectionName}))
+    def commentsFilterBySection(self, sectionName):
+        mycol = self.mongoClientDB[self.dataCollectionName]
+        return list(mycol.find({"section": sectionName}))
 
-        def getSectionwiseCommentCount(self):
-            mycol = self.mongoClientDB[self.dataCollectionName]
-            pipeline = {"$group": {"_id": "$section", "count": {"$sum": 1}}}
-            dictionary = mycol.aggregate([pipeline])
-            answer = {}
-            for item in dictionary:
-                answer[item["_id"]] = item["count"]
-            return answer
+    def getSectionwiseCommentCount(self):
+        mycol = self.mongoClientDB[self.dataCollectionName]
+        pipeline = {"$group": {"_id": "$section", "count": {"$sum": 1}}}
+        dictionary = mycol.aggregate([pipeline])
+        answer = {}
+        for item in dictionary:
+            answer[item["_id"]] = item["count"]
+        return answer
 
-        def showSectionsStatistics(self):
-            dictionary = self.getSectionwiseCommentCount()
+    def showSectionsStatistics(self):
+        dictionary = self.getSectionwiseCommentCount()
 
-            arr = []
-            for key, val in dictionary.items():
-                arr.append(val)
+        arr = []
+        for key, val in dictionary.items():
+            arr.append(val)
 
-            dictionary = {}
-            min_len = 999999999999999  # Done
-            max_len = 0  # Done
-            avg = 0  # Done
-            totalLen = 0  # Done
-            standardDev = 0  # Done
-            count = len(arr)  # Done
-            variance = 0  # Done
+        dictionary = {}
+        min_len = 999999999999999  # Done
+        max_len = 0  # Done
+        avg = 0  # Done
+        totalLen = 0  # Done
+        standardDev = 0  # Done
+        count = len(arr)  # Done
+        variance = 0  # Done
 
-            for item in arr:
-                if item < min_len:
-                    min_len = item
-                if item > max_len:
-                    max_len = item
-                totalLen += item
+        for item in arr:
+            if item < min_len:
+                min_len = item
+            if item > max_len:
+                max_len = item
+            totalLen += item
 
-            avg = float(totalLen) / float(count)
+        avg = float(totalLen) / float(count)
 
-            for item in arr:
-                variance += (item - avg) * (item - avg)
+        for item in arr:
+            variance += (item - avg) * (item - avg)
 
-            variance = float(variance) / float(count)
-            standardDev = math.sqrt(variance)
+        variance = float(variance) / float(count)
+        standardDev = math.sqrt(variance)
 
-            dictionary['min_len'] = min_len
-            dictionary['max_len'] = max_len
-            dictionary['avg'] = avg
-            dictionary['standardDev'] = standardDev
-            dictionary['count'] = count
-            dictionary['variance'] = variance
-            return dictionary
+        dictionary['min_len'] = min_len
+        dictionary['max_len'] = max_len
+        dictionary['avg'] = avg
+        dictionary['standardDev'] = standardDev
+        dictionary['count'] = count
+        dictionary['variance'] = variance
+        return dictionary
 
 
 if __name__ == '__main__':
@@ -379,8 +379,11 @@ if __name__ == '__main__':
 
     analyzer = Analyzer(myclient, mongoClientDB)
 
-    analyzer.downloadAndLoad(
-        'Indian_Institute_of_Technology_Ropar', 'Indian_Institute_of_Technology_Ropar')
+    analyzer.putInDatabase('sample', 'sample.json')
+    analyzer.setCollectionName('sample')
+    print(analyzer.getAllAuthors())
+    #analyzer.downloadAndLoad(
+        #'Indian_Institute_of_Technology_Ropar', 'Indian_Institute_of_Technology_Ropar')
 
     """
 	analyzer.deleteCollection('Indian_Institute_of_Technology_Ropar')
