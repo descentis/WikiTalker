@@ -4,6 +4,7 @@ import operator
 import math
 import matplotlib.pyplot as plt
 import requests
+import os
 
 
 def download_file(filename):
@@ -379,7 +380,7 @@ if __name__ == '__main__':
 
     analyzer = Analyzer(myclient, mongoClientDB)
 
-    analyzer.putInDatabase('sample', 'sample.json')
+    analyzer.putInDatabase('sample', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'sample.json'))
     analyzer.setCollectionName('sample')
     print(analyzer.getAllAuthors())
     #analyzer.downloadAndLoad(
