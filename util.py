@@ -183,8 +183,9 @@ def input(input_folder,output_folder,k,processed_folder,dicts_folder,edges_folde
 
         return len(os.listdir(output_folder))
 
-    os.mkdir(output_folder)    
+    os.mkdir(output_folder)
 
+    start=0
     for i in range(count):
         os.mkdir(os.path.join(output_folder,'run_' + str(i+1)))
         curr_dir = os.path.join(output_folder,'run_' + str(i+1))
@@ -198,13 +199,13 @@ def input(input_folder,output_folder,k,processed_folder,dicts_folder,edges_folde
         curr = os.path.join(curr,'input')
         os.mkdir(curr)
         if i < d:
-            end = min(n,i*m+m+1)
+            end = start+m+1
         else:
-            end = min(n,i*m+m)
-        for j in range(i*m,end):
+            end = start+m
+        for j in range(start,end):
             copyfile(os.path.join(input_folder,A[j]),os.path.join(curr,A[j]))
-            # os.system('cp "' + os.path.join(input_folder,A[j]) + '" "' + curr + '"')       
-
+            # os.system('cp "' + os.path.join(input_folder,A[j]) + '" "' + curr + '"')
+        start = end
     return count
 
 
@@ -212,8 +213,8 @@ def preProcessing(input_raw_data_dir_name, processed_data_dir_name):
     # for suffix stripping
     ps = PorterStemmer()
 
-    stop_words = set(stopwords.words('english')) 
-    
+    stop_words = set(stopwords.words('english'))
+
     # to get only english alphabets
     tokenizer = RegexpTokenizer(r'[a-zA-Z]+')
 

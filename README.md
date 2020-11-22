@@ -27,3 +27,20 @@ This is your MongoDB shell:
 [WikiTalker/sample.json]: <https://github.com/descentis/WikiTalker/blob/master/WikiTalker/sample.json>
 [WikiTalker/analyzer.py]: <https://github.com/descentis/WikiTalker/blob/master/WikiTalker/analyzer.py>
 [GraWitas]: <https://github.com/bencabrera/grawitas>
+
+
+## Methods to be implemented
+
+1) Extract the list of editors
+
+2) Find top editors
+
+3) Find the sentiments of each comments
+
+4) Comments by day/month/year
+
+5) Comments during a given duration
+
+6) Creating the discussion tree [Here](https://repositori.upf.edu/bitstream/handle/10230/26817/laniado_icwsm11_when.pdf?sequence=1&isAllowed=y)
+
+7) Common editors in a set of talk pages 
